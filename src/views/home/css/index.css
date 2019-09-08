@@ -1,0 +1,41 @@
+.box{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+}
+.ant-layout{
+   height: 750px;
+}
+.ant-menu-dark{
+    height: 700px;
+}
+.ant-layout{
+    width: 100%;
+    height: 100%;
+    background: #f0f2f5;
+    position: relative;
+    display: flex;
+}
+.header{
+    width: 100%;
+    height: 64px;
+    background: #fff;
+}
+.box-list{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #f0f2f5;
+    overflow-y: auto;
+}
+
+.ant-layout-content{
+    width: 100%;
+    height: 100%;
+    background: #f0f2f5;
+    position: relative;
+    display: flex;
+}
+.ant-layout, .ant-layout * {
+    box-sizing: border-box;
+}

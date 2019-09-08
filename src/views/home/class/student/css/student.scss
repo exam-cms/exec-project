@@ -1,0 +1,54 @@
+.warper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f0f2f5;
+    .header{
+        width: 100%;
+        height: 71px;
+        padding: 20px 0;
+        margin: 10px 0;
+        background: #f0f2f5
+    }
+    .searchbox{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        margin-bottom: 4px;
+        .useript{
+            width: 180px;
+            height: 32px;
+            margin-right: 15px;
+        }
+        .class{
+            width: 180px;
+            height: 32px;
+            margin-right: 15px;
+        }
+        .room{
+            width: 180px;
+            height: 32px;
+            margin-right: 15px;
+        }
+        .searchbtn,.resetbtn{
+            height: 32px;
+            padding: 0 40px;
+            border: 0;
+            color: #fff;
+            background: #0139FD;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+    }
+    .content{
+        width: 100%;
+        background: #fff;
+        th{
+            background: #f0f2f5;
+        }
+    }
+}
+.ant-table-wrapper{
+    padding: 0;
+}

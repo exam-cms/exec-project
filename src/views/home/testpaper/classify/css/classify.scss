@@ -1,0 +1,143 @@
+.classbox {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  .tit {
+    width: 100%;
+    height: 71px;
+    padding: 20px 0;
+    margin-top: 10px;
+  }
+  .show {
+    width: 100%;
+    height: 386px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 10px;
+  }
+  .addbtn {
+    width: 150px;
+    height: 40px;
+    padding: 0 40px;
+    background: #0139fd;
+    color: aliceblue;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 25px;
+  }
+  .table {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    thead {
+      height: 52px;
+      width: 100%;
+      padding: 16px;
+      display: flex;
+      background-color: #f4f7f9;
+      border-bottom: 1px solid #eee;
+      th:nth-child(1) {
+        flex: 5;
+      }
+      th:nth-child(2) {
+        flex: 3;
+      }
+      th:nth-child(3) {
+        flex: 2;
+      }
+    }
+    tbody {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      tr {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        td:nth-child(1) {
+          flex: 5;
+        }
+        td:nth-child(2) {
+          flex: 3;
+        }
+        td:nth-child(3) {
+          flex: 2;
+        }
+      }
+    }
+  }
+  .dialog {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    .addbox {
+      width: 600px;
+      height: 275px;
+      background: #fff;
+      position: relative;
+      top: 100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      span{
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      .addbody{
+        padding: 24px 80px;
+        h2{
+          text-align: center;
+        }
+        input{
+          width: 100%;
+          height: 40px;
+          line-height: 40px;
+          border: 0;
+          border-bottom: 1px solid #eee;
+        }
+      }
+      .addsub{
+        width: 100%;
+        height: 121px;
+        padding: 40px 0px;
+        margin-top:25px; 
+        line-height: 40px;
+        text-align: center;
+        .surebtn{
+          height: 40px;
+          padding: 0 40px;
+          background: #0139fd;
+          color: aliceblue;
+          margin-right: 10px;
+          border: 0;
+          border-radius: 5px;
+        }
+        .cancelbtn{
+          height: 40px;
+          padding: 0 15px;
+          border: 1px solid #ccc;
+          background: #fff;
+          margin-top:1px; 
+        }
+      }
+    }
+  }
+  .isshow{
+    display: block;
+  }
+}
+

@@ -1,0 +1,19 @@
+select{
+    height: 28px;
+    border:1px solid #ccc;
+    border-radius: 3px;
+    margin:0 15px;
+}
+.btn{
+    height: 30px;
+    position: absolute;
+    right: 30%;
+    top:35%;
+    background:#0139fd
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}

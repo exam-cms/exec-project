@@ -1,0 +1,15 @@
+.add-inp{
+    margin-top: 20px;
+    width: 300px;
+}
+.add-inp select{
+    height: 30px;
+    border:1px solid #ccc;
+    border-radius: 3px;
+}
+.content{
+    height: 100%;
+    padding:15px;
+    border-radius: 5px;
+    background: #fff;
+}

@@ -1,0 +1,38 @@
+.add-wrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    background: #f0f2f5;
+    min-height: 0;
+    overflow-y: scroll;
+}
+.title{
+    padding: 20px 0px; 
+    margin-top: 10px;
+}
+.add{
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+.addUser{
+    width: 33.3%;
+    height: 50%;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer
+}
+.addUser div {
+  margin-top: 13px;
+}
+.addUser div select{
+    height: 30px;
+    border:1px solid #ccc;
+    border-radius: 3PX;
+}

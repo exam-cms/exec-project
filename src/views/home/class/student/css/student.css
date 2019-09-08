@@ -1,0 +1,63 @@
+.warper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
+}
+
+.warper .header {
+  width: 100%;
+  height: 71px;
+  padding: 20px 0;
+  margin: 10px 0;
+  background: #f0f2f5;
+}
+
+.warper .searchbox {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.warper .searchbox .useript {
+  width: 180px;
+  height: 32px;
+  margin-right: 15px;
+}
+
+.warper .searchbox .class {
+  width: 180px;
+  height: 32px;
+  margin-right: 15px;
+}
+
+.warper .searchbox .room {
+  width: 180px;
+  height: 32px;
+  margin-right: 15px;
+}
+
+.warper .searchbox .searchbtn, .warper .searchbox .resetbtn {
+  height: 32px;
+  padding: 0 40px;
+  border: 0;
+  color: #fff;
+  background: #0139FD;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.warper .content {
+  width: 100%;
+  background: #fff;
+}
+
+.warper .content th {
+  background: #f0f2f5;
+}
+
+.ant-table-wrapper {
+  padding: 0;
+}
