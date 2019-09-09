@@ -4,10 +4,11 @@ import { message } from "antd";
 import { getToken } from "./index";
 
 const instance = axios.create({
-  baseURL: "http://localhost:7001",
+  baseURL: "http://169.254.169.33:7001",
   timeout: 1000,
   headers: { authorization: getToken() }
 });
+console.log(getToken())
 instance.interceptors.request.use(
   config => {
     return config;

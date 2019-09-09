@@ -11,6 +11,7 @@ class User{
     @observable account: any = account;
     @action async login(form: any): Promise<any>{
         let result: any = await login(form);
+        // console.log(result.code)
                if (result.code === 1){
             if (form.remember){
                 window.localStorage.setItem('account', JSON.stringify(form));
