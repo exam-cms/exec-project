@@ -162,23 +162,31 @@ class Mangement extends React.Component {
   };
   //是否打开蒙成
   public addclassify = () => {
+    console.log(this.state.room_id)
     let add ='add';
     this.setState({ flag: !this.state.flag,class:add});
 
   };
 
 
-  public handleChange = (value: any) => {
-    console.log(value);
+  public handleChange = (value: any,title:any) => {
+    console.log(title);
+
+    let {props} =title;
     this.setState({
-      subject_id: value
+      subject_id: props.value,
+      subject_text: props.childrenlue
     });
+    console.log(this.state.subject_id,this.state.subject_id)
   };
-  public handleChange1 = (value: any) => {
+  public handleChange1 = (value: any,title:any) => {
+    console.log(title);
+    let {props} =title;
     this.setState({
-      room_id: value
-      
+      room_id:props.value,
+      room_text:props.children
     });
+    console.log(this.state.room_id,this.state.room_text)
   };
 
   //判断是添加班级还是修改班级
@@ -187,18 +195,17 @@ class Mangement extends React.Component {
       this.addgrade()
       this.getlist();
     }else if(this.state.class=='del'){
-  
      this.upDate()
-    //  this.getlist();
+     this.getlist();
     }
   };
    //修改
    public splices = (text:any)=>{
     let del ='del';
-   let items= this.state.room.filter((item:any)=>{
-      return item=item.room_id==text.room_id
-    })
-    console.log(items)
+  //  let items= this.state.room.filter((item:any)=>{
+  //     return item=item.room_id==text.room_id
+  //   })
+    console.log(text.room_id)
     this.setState({ flag: true,class:del,room_id:text.room_id});
     
    }
@@ -230,6 +237,7 @@ class Mangement extends React.Component {
   };
   //添加班级数据
   public addgrade = async () => {
+    console.log(this.state.classNo,this.state.room_id,this.state.subject_id)
     const reult = await this.props["manage"].addStudent({
       grade_name: this.state.classNo,
       room_id: this.state.room_id,
@@ -244,10 +252,9 @@ class Mangement extends React.Component {
   };
 
   public upDate = async () => {
-  console.log(this.state.room_id,this.state.room_text)
-    // const reult = await this.props["manage"].updateClass({room_id:this.state.room_id});
-    // console.log(reult)
-    // this.getlist()
+    console.log(this.state.room_id,this.state.room_text)
+    const reult = await this.props["manage"].updateClass({room_id:this.state.room_id,room_text:this.state.room_text});
+    console.log(reult)
   };
 
   // //添加班级数据

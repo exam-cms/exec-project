@@ -18,7 +18,12 @@ export let deleteClass = (params: object) => {
   return request.delete("/manger/grade/delete", {data:params});
 };
 
-// //
+// 修改班级
+export let updateClassNo = (params: object) => {
+    console.log(params);
+    return request.put("/manger/room/update", params);
+  };
+
 // export let addClassNo=(params:object)=>{
 //     console.log(params)
 //     return request.post("/manger/grade",params)
@@ -38,10 +43,7 @@ export let newClass = (params: object) => {
   return request.get("/manger/grade/new", params);
 };
 
-export let updateClassNo = (params: object) => {
-  console.log(params);
-  return request.put("/manger/grade/update", {data:params});
-};
+
 
 //
 export let getSubject = (params: object) => {
