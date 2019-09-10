@@ -8,3 +8,6 @@ export let gettopic=()=>{
 export let getcourse=()=>{
     return request.get("/exam/subject")//获取课程类型
 }
+export let createExam=(params:object)=>{
+    return request.post("/exam/exam",params)//创建试卷
+}

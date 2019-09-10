@@ -15,7 +15,6 @@ class Login extends React.Component <Props>{
     e.preventDefault();
     this.props.form.validateFields(async(err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
         let {code,msg,token}=await this.props.user.login(values)
           if(code==1){
             setToken(token)
@@ -27,7 +26,6 @@ class Login extends React.Component <Props>{
     });
   };
   render() {
-    console.log(this.props.user.login)
     const { getFieldDecorator } = this.props.form;
     const {user_name, user_pwd} = this.props.user.account;
     return (

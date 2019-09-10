@@ -6,7 +6,6 @@ export default class RouterView extends React.Component{
   }
   render() {
     let { routes } = this.props;
-    console.log(routes,"view")
     let routerArr = routes?routes.filter(item => !item.redirect):"";
     let redirectArr =  routes?routes.filter(item => item.redirect):"";
     return (

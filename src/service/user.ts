@@ -20,3 +20,6 @@ export let getview=()=>{
 export let getpower=()=>{
     return request.get("/user/identity_view_authority_relation")//身份和视图权限关系
 }
+export let getuserInfo=()=>{
+    return request.get("/user/userInfo")
+}
