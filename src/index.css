@@ -6,9 +6,6 @@ body {
   height: 100%;
  
 }
-div{
-  font-size: 14px;
-}
 html{
   width: 100%;
   height: 100%;
@@ -18,7 +15,7 @@ html{
   height: 100%;
 }
 .ant-menu-dark{
-  height: 700px !important;
+  height:650px !important;
 }
 .ant-layout-content{
   padding: 0 !important;

@@ -5,23 +5,27 @@ const { Option } = Select;
 import { inject, observer } from "mobx-react";
 interface Props {
   exam: any;
+  history:any
 }
 @inject("exam")
+@observer
 class Addexam extends React.Component<Props> {
   state = {
-    startValue: null,
-    endValue: null,
+    start_time: null,
+    end_time: null,
     endOpen: false,
     exam_id: "",
     subject_id: "",
     title: "",
+    number:"",
+
     examtypelist: [],
     courselist: []
   };
   public render() {
     const {
-      startValue,
-      endValue,
+      start_time,
+      end_time,
       endOpen,
       examtypelist,
       courselist,
@@ -44,7 +48,6 @@ class Addexam extends React.Component<Props> {
           <div className="item">
             <li>选择考试类型</li>
             <Select
-              defaultValue="周考一"
               style={{ width: 176, paddingBottom: 8, marginBottom: 24 }}
               onChange={(e: any) => {
                 this.handleChange(e, "exam_id");
@@ -60,7 +63,6 @@ class Addexam extends React.Component<Props> {
           <div className="item">
             <li>选择课程</li>
             <Select
-              defaultValue="简答题"
               style={{ width: 176, paddingBottom: 8, marginBottom: 24 }}
               onChange={(e: any) => {
                 this.handleChange(e, "subject_id");
@@ -75,16 +77,14 @@ class Addexam extends React.Component<Props> {
           </div>
           <div className="item">
             <li>设置题量</li>
-            <InputNumber min={1} max={10} />
+            <InputNumber min={3} max={10} onChange={this.changenumber}/>
           </div>
           <div className="time">
             <li>考试时间</li>
             <div className="timebox">
               <DatePicker
-                // disabledDate={this.disabledStartDate}
                 showTime
                 format="YYYY-MM-DD HH:mm:ss"
-                // value={startValue}
                 placeholder="开始时间"
                 onChange={this.onStartChange}
                 onOpenChange={this.handleStartOpenChange}
@@ -92,10 +92,8 @@ class Addexam extends React.Component<Props> {
               />
               <span className="kong">-</span>
               <DatePicker
-                // disabledDate={this.disabledEndDate}
                 showTime
                 format="YYYY-MM-DD HH:mm:ss"
-                // value={endValue}
                 placeholder="结束时间"
                 onChange={this.onEndChange}
                 open={endOpen}
@@ -104,7 +102,7 @@ class Addexam extends React.Component<Props> {
               />
             </div>
           </div>
-          <button className="btn">创建试卷</button>
+          <button className="btn" onClick={this.create}>创建试卷</button>
         </div>
       </div>
     );
@@ -123,22 +121,6 @@ class Addexam extends React.Component<Props> {
   changetitle = (e: any) => {
     this.setState({ title: e.target.value });
   };
-  // disabledStartDate = (startValue: any) => {
-  //   const { endValue } = this.state;
-  //   if (!startValue || !endValue) {
-  //     return false;
-  //   }
-  //   return startValue.valueOf() > endValue.valueOf();
-  // };
-
-  // disabledEndDate = (endValue: any) => {
-  //   const { startValue } = this.state;
-  //   if (!endValue || !startValue) {
-  //     return false;
-  //   }
-  //   return endValue.valueOf() <= startValue.valueOf();
-  // };
-
   onChange = (field: any, value: any) => {
     this.setState({
       [field]: value._d*1
@@ -146,26 +128,33 @@ class Addexam extends React.Component<Props> {
       console.log(this.state)
     });
   };
-
   onStartChange = (value: any) => {
-    this.onChange("startValue", value);
-    console.log("onStartChange")
+    this.onChange("start_time", value)
   };
 
   onEndChange = (value: any) => {
-    this.onChange("endValue", value);
-    console.log("onEndChange")
+    this.onChange("end_time", value);
   };
-
   handleStartOpenChange = (open: any) => {
     if (!open) {
       this.setState({ endOpen: true });
     }
-    console.log("handleStartOpenChang")
   };
-
   handleEndOpenChange = (open: any) => {
     this.setState({ endOpen: open });
   };
+  changenumber=(value:any)=>{
+    this.setState({number:value})
+  }
+   create=async ()=>{
+    let {subject_id,exam_id,title,start_time,end_time,number}=this.state
+    let data=await this.props.exam.createExam({subject_id,exam_id,title,start_time,end_time,number})
+    if(data.code==1){
+        this.props.history.push({
+          pathname:"/home/createexam",
+          query:data.data
+        })
+    }
+  }
 }
 export default Addexam;
