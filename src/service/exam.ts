@@ -8,3 +8,7 @@ export let gettopic=()=>{
 export let getcourse=()=>{
     return request.get("/exam/subject")//获取课程类型
 }
+
+export let getexam=()=>{
+    return request.get("/exam/exam")//获取课程类型
+}

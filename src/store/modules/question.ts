@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx'
-import {getQuestion,addQuestion} from '../../service/index'
+import {getQuestion,addQuestion,getQuestionsType,getQuestionsCondition} from '../../service/index'
 
 class Question{
     @action async getQuestion(params: any): Promise<any>{
@@ -10,6 +10,17 @@ class Question{
         let result: any = await addQuestion(params);
         return result
     }
+    @action async getQuestionsType(params:any):Promise<any>{
+        let result: any = await getQuestionsType(params);
+        return result
+    }
+    @action async getQuestionsCondition(params:any):Promise<any>{
+        console.log(params,"..................")
+        let result: any = await getQuestionsCondition(params);
+        return result
+    }
 }
 
 export default Question;
+
+
