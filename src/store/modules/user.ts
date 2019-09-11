@@ -6,7 +6,8 @@ import {
   getapi,
   getport,
   getview,
-  getpower
+  getpower,
+  getuserInfo
 } from "../../service/index";
 import { setToken, removeToken } from "../../utils/index";
 import { HttpInfo, HttpType, LoginForm } from "../../types/index";
@@ -60,6 +61,11 @@ class User {
   @action async logout(): Promise<any> {
     removeToken();
   }
+  @action async getuserInfo(): Promise<any> {
+    let result: any = await getuserInfo();
+    return result;
+  }
+  
 }
 
 export default User;

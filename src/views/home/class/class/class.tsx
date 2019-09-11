@@ -192,10 +192,17 @@ class Mangement extends React.Component {
   //判断是添加班级还是修改班级
   public addlist = () => {
     if(this.state.class=='add'){
-      this.addgrade()
+      this.addgrade();
+      this.setState({
+        flag:false
+      })
       this.getlist();
+
     }else if(this.state.class=='del'){
      this.upDate()
+     this.setState({
+      flag:false
+    })
      this.getlist();
     }
   };

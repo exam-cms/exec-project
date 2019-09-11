@@ -125,9 +125,12 @@ class Mangement extends React.Component {
 
   public Changes = (event: any) => {
     let name = event.target.name;
-    this.setState({
-      [name]: event.target.value
-    });
+    if(event.target.name){
+      this.setState({
+        [name]: event.target.value
+      });
+    }
+    
   };
   public componentDidMount() {
     this.GetClassRome();
@@ -137,7 +140,7 @@ class Mangement extends React.Component {
     this.setState({ flag: !this.state.flag });
   };
   public addGrad = () => {
-    this.AddclassRome({ room_text: this.state.grad });
+    this.AddclassRome();
     this.GetClassRome();
     this.addclassify();
   };
@@ -153,10 +156,17 @@ class Mangement extends React.Component {
       data: reult.data
     });
   };
-  public AddclassRome = async (data: any) => {
-    const reult = await this.props["manage"].addclassRome(data);
-    this.GetClassRome();
-    console.log(reult);
+  public AddclassRome = async () => {
+    
+    if(this.state.grad){
+      const reult = await this.props["manage"].addclassRome({ room_text: this.state.grad });
+      this.GetClassRome();
+      console.log(reult);
+    }else{
+      alert('添加教室不能为kon')
+    }
+   
+    
   };
   public DelclassRome = async () => {
     const reult = await this.props["manage"].delclassRome({
