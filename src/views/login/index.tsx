@@ -15,19 +15,17 @@ class Login extends React.Component<Props> {
     e.preventDefault();
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
-        let { code, msg, token } = await this.props.user.login(values);
-        if (code == 1) {
-          setToken(token);
-          this.props.history.replace("/home");
-        } else {
-          message.error(msg || "用户名或者密码错误");
-        }
+        let {code,msg,token}=await this.props.user.login(values)
+          if(code==1){
+            setToken(token)
+            this.props.history.replace("/home")
+          }else{
+            message.error(msg||"用户名或者密码错误")
+          }
       }
     });
   };
   render() {
-    console.log(this.props.user.login);
     const { getFieldDecorator } = this.props.form;
     const { user_name, user_pwd } = this.props.user.account;
     return (

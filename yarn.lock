@@ -8033,8 +8033,8 @@ react-loadable@^5.5.0:
 
 react-markdown@^4.2.2:
   version "4.2.2"
-  resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-4.2.2.tgz#b378774fcffb354653db8749153fc8740f9ed2f1"
-  integrity sha512-/STJiRFmJuAIUdeBPp/VyO5bcenTIqP3LXuC3gYvregmYGKjnszGiFc2Ph0LsWC17Un3y/CT8TfxnwJT7v9EJw==
+  resolved "https://registry.npm.taobao.org/react-markdown/download/react-markdown-4.2.2.tgz#b378774fcffb354653db8749153fc8740f9ed2f1"
+  integrity sha1-s3h3T8/7NUZT24dJFT/IdA+e0vE=
   dependencies:
     html-to-react "^1.3.4"
     mdast-add-list-metadata "1.0.1"
