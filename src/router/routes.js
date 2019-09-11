@@ -1,7 +1,7 @@
-import Loadable from "react-loadable"
-import React from "react"
-function Loading(){
-    return <div></div>
+import Loadable from "react-loadable";
+import React from "react";
+function Loading() {
+  return <div></div>;
 }
 let Home=Loadable({loading:Loading,loader:()=>import("@/index")})
 let Login=Loadable({loading:Loading,loader:()=>import("../views/login")})

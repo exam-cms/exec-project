@@ -1,36 +1,58 @@
 import * as React from "react";
-import { Button } from "antd";
-import { Table, Divider, Tag } from "antd";
+import { Table, Button } from "antd";
 import "./css/examlist.css";
+import { inject, observer } from "mobx-react";
 const ButtonGroup = Button.Group;
 const { Column, ColumnGroup } = Table;
-const data = [
+const columns = [
   {
-    key: "1",
-    firstName: "试卷信息",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"]
+    title: "试卷信息",
+    dataIndex: "msg",
+    key: "msg"
   },
   {
-    key: "2",
-    firstName: "Jim",
-    lastName: "Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"]
+    title: "班级",
+    dataIndex: "class",
+    key: "class"
   },
   {
-    key: "3",
-    firstName: "Joe",
-    lastName: "Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"]
+    title: "创建人",
+    dataIndex: "creator",
+    key: "creator"
+  },
+  {
+    title: "开始时间",
+    dataIndex: "start",
+    key: "start"
+  },
+  {
+    title: "结束时间",
+    dataIndex: "end",
+    key: "end"
+  },
+  {
+    title: "操作",
+    dataIndex: "operation",
+    key: "tags",
+    width: 100,
+    render: () => <a>详情</a>
   }
 ];
-class Examlist extends React.Component {
+interface Props {
+  exam: any;
+}
+@inject("exam")
+@observer
+class Examlist extends React.Component<Props> {
+  state = {
+    data: [],
+    examList: [],
+    subjectList: [],
+    exam: "",
+    subject: ""
+  };
   public render() {
+    let { examList, subjectList, exam, subject, data } = this.state;
     return (
       <div
         className="examlistBox"
@@ -51,24 +73,37 @@ class Examlist extends React.Component {
           }}
         >
           <span>考试类型 :</span>
-          <select style={{ width: 120 }}>
-            <option value="Javaspcrit上">周考一</option>
-            <option value="Javaspcrit下">周考二</option>
-            <option value="模块开发">周考三</option>
-            <option value="移动开发">月考</option>
+          <select
+            style={{ width: 120 }}
+            value={exam}
+            onChange={e => this.setState({ exam: e.target.value })}
+          >
+            <option value=""></option>
+            {examList.map((item: any) => (
+              <option value={item.exam_name} key={item.exam_id}>
+                {item.exam_name}
+              </option>
+            ))}
           </select>
           <span>课程 : </span>
-          <select style={{ width: 120 }}>
-            <option value="Javaspcrit上">Javaspcrit上</option>
-            <option value="Javaspcrit下">Javaspcrit下</option>
-            <option value="模块开发">模块开发</option>
-            <option value="移动开发">移动开发</option>
-            <option value="node开发">node开发</option>
-            <option value="组件化开发">组件化开发</option>
-            <option value="渐进式开发">渐进式开发</option>
-            <option value="项目实战">项目实战</option>
+          <select
+            style={{ width: 120 }}
+            value={subject}
+            onChange={e => this.setState({ subject: e.target.value })}
+          >
+            <option value=""></option>
+            {subjectList.map((item: any) => (
+              <option value={item.exam_name} key={item.subject_id}>
+                {item.subject_text}
+              </option>
+            ))}
           </select>
-          <Button type="primary" icon="search" className="btn">
+          <Button
+            type="primary"
+            icon="search"
+            className="btn"
+            onClick={this.handleBtn}
+          >
             查询
           </Button>
         </div>
@@ -89,18 +124,25 @@ class Examlist extends React.Component {
             </ButtonGroup>
           </div>
           <div>
-            <Table dataSource={data}>
-              <Column title="试卷信息" dataIndex="msg" key="msg" />
-              <Column title="班级" dataIndex="class" key="class" />
-              <Column title="创建人" dataIndex="creator" key="creator" />
-              <Column  title="开始时间" dataIndex="start" key="start" />
-              <Column  title="结束时间" dataIndex="end" key="end" />
-              <Column  title="操作" dataIndex="operation" key="tags" />
-            </Table>
+            <Table
+              dataSource={data}
+              pagination={false}
+              columns={columns}
+            ></Table>
           </div>
         </div>
       </div>
     );
+  }
+
+  handleBtn = async () => {
+    let data = await this.props.exam.getexam();
+    this.setState({ data: data.data });
+  };
+  async componentDidMount() {
+    let examList = await this.props.exam.getexamtype();
+    let subjectList = await this.props.exam.getcourse();
+    this.setState({ examList: examList.data, subjectList: subjectList.data });
   }
 }
 export default Examlist;
