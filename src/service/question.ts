@@ -15,3 +15,7 @@ export let getQuestionsType=(params:object)=>{
 export let getQuestionsCondition=(params:object)=>{
     return request.get("/exam/questions/condition",{params})
 }
+
+export let update=(params:object)=>{
+    return request.put("/exam/questions/update",{params})
+}

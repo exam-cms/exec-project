@@ -15,17 +15,7 @@ interface Props {
   match: any;
   location: any;
 }
-function showConfirm() {
-  confirm({
-    title: "你确定要添加这套试题么",
-    content: "真的要添加么",
-    onOk() {
-      console.log("wodhi xaiosada");
-      //这发起请求
-    },
-    onCancel() {}
-  });
-}
+
 interface Props {
   item: any;
   exam: any;
@@ -101,12 +91,26 @@ class Compile extends React.Component<Props> {
           </Select>
           <li>答案信息</li>
           <Editor value={questions_answer} style={{ height: "auto" }} />
-          <button className="subbtn" onClick={showConfirm}>
+          <button className="subbtn" onClick={this.showConfirm}>
             提交
           </button>
         </div>
       </div>
     );
+    
+  }
+  showConfirm=()=> {
+    console.log(this.props) 
+    confirm({
+      title: "你确定要修改试题吗",
+      content: "真的要修改吗",
+      onOk() {
+        console.log("wodhi xaiosada");
+        //这发起请求
+      
+      },
+      onCancel() {}
+    });
   }
   componentDidMount() {
     this.getlist();
