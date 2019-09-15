@@ -62,7 +62,7 @@ class Compile extends React.Component<Props> {
           >
             {examList &&
               examList.map((item: any) => (
-                <Option value={item.exam_id}>{item.exam_name}</Option>
+                <Option value={item.exam_id} key={item.exam_id}>{item.exam_name}</Option>
               ))}
           </Select>
           <li>请选择课程类型:</li>
@@ -73,7 +73,7 @@ class Compile extends React.Component<Props> {
           >
             {subjectList &&
               subjectList.map((item: any) => (
-                <Option value={item.subject_id}>{item.subject_text}</Option>
+                <Option value={item.subject_id} key={item.subject_id}>{item.subject_text}</Option>
               ))}
           </Select>
           <li>请选择题目类型:</li>
@@ -84,7 +84,7 @@ class Compile extends React.Component<Props> {
           >
             {getQuestionsType &&
               getQuestionsType.map((item: any) => (
-                <Option value={item.questions_type_id}>
+                <Option value={item.questions_type_id} key={item.questions_type_id}>
                   {item.questions_type_text}
                 </Option>
               ))}
@@ -100,14 +100,14 @@ class Compile extends React.Component<Props> {
     
   }
   showConfirm=()=> {
-    console.log(this.props) 
+    let that=this;
     confirm({
       title: "你确定要修改试题吗",
       content: "真的要修改吗",
-      onOk() {
-        console.log("wodhi xaiosada");
+     async onOk() {
         //这发起请求
-      
+        const reult = await that.props.question.update();
+        console.log(that.props)
       },
       onCancel() {}
     });

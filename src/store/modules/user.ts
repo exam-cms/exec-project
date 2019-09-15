@@ -9,7 +9,7 @@ if (window.localStorage.getItem("account")) {
 class User{
     @observable isLogin: boolean = false;
     @observable account: any = account;
-    @observable userInfo: any = {};
+    // @observable userInfo: any = {};
     @observable viewAuthority: object[] = []; 
     @action async login(form: any): Promise<any>{
         let result: any = await login(form);
@@ -54,11 +54,13 @@ class User{
     @action async logout():Promise<any>{
         removeToken();
     }
+
     @action async getUserInfo(): Promise<any>{
         let userInfo:any = await getUserInfo();
+        return userInfo
         console.log('userInfo...', userInfo);
-        this.userInfo = userInfo.data;
-        this.getViewAuthority();
+        // this.userInfo = userInfo.data;
+        // this.getViewAuthority();
     }
 
     // 获取用户权限

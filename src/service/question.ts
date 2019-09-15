@@ -17,5 +17,5 @@ export let getQuestionsCondition=(params:object)=>{
 }
 
 export let update=(params:object)=>{
-    return request.put("/exam/questions/update",{params})
+    return request.put("/exam/questions/update",params)
 }
