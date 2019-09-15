@@ -1,21 +1,20 @@
-import { Form, Icon, Input, Button, Checkbox,message } from "antd";
+import { Form, Icon, Input, Button, Checkbox, message } from "antd";
 import * as React from "react";
-import {setToken} from '../../utils/index'
-import "./index.css"
-import {WrappedFormUtils} from "antd/lib/form/Form"
-import {inject,observer} from "mobx-react"
-interface Props{
-  form:WrappedFormUtils,
-  user:any,
-  history:any
+import { setToken } from "../../utils/index";
+import "./index.css";
+import { WrappedFormUtils } from "antd/lib/form/Form";
+import { inject, observer } from "mobx-react";
+interface Props {
+  form: WrappedFormUtils;
+  user: any;
+  history: any;
 }
 @inject("user")
-class Login extends React.Component <Props>{
-  handleSubmit=(e:React.FormEvent)=> {
+class Login extends React.Component<Props> {
+  handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    this.props.form.validateFields(async(err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
         let {code,msg,token}=await this.props.user.login(values)
           if(code==1){
             setToken(token)
@@ -27,24 +26,26 @@ class Login extends React.Component <Props>{
     });
   };
   render() {
-    console.log(this.props.user.login)
     const { getFieldDecorator } = this.props.form;
-    const {user_name, user_pwd} = this.props.user.account;
+    const { user_name, user_pwd } = this.props.user.account;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
           {getFieldDecorator("user_name", {
-            validateTrigger:"onBlur",
+            validateTrigger: "onBlur",
             initialValue: user_name,
-            rules: [{ required: true, message: "Please input your username!" },{
-              validator:(rule,value,callback)=>{
-                if(/[a-z]{5,20}/.test(value)){
-                  callback()
-                }else{
-                  callback("please input vaild username!")
+            rules: [
+              { required: true, message: "Please input your username!" },
+              {
+                validator: (rule, value, callback) => {
+                  if (/[a-z]{5,20}/.test(value)) {
+                    callback();
+                  } else {
+                    callback("please input vaild username!");
+                  }
                 }
               }
-            }]
+            ]
           })(
             <Input
               prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -54,15 +55,23 @@ class Login extends React.Component <Props>{
         </Form.Item>
         <Form.Item>
           {getFieldDecorator("user_pwd", {
-            validateTrigger:"onBlur",
+            validateTrigger: "onBlur",
             initialValue: user_pwd,
-            rules: [{validator:(rule,value,callback)=>{
-              if(/^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/.test(value)){
-                callback()
-              }else{
-                callback("please input vaild password!")
+            rules: [
+              {
+                validator: (rule, value, callback) => {
+                  if (
+                    /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/.test(
+                      value
+                    )
+                  ) {
+                    callback();
+                  } else {
+                    callback("please input vaild password!");
+                  }
+                }
               }
-            }}],
+            ]
           })(
             <Input
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -75,24 +84,19 @@ class Login extends React.Component <Props>{
           {getFieldDecorator("remember", {
             valuePropName: "checked",
             initialValue: true
-          })(<Checkbox>Remember me</Checkbox>)}
-          </Form.Item>
-          <Form.Item>
-          {getFieldDecorator("remember", {
-            valuePropName: "checked",
-            initialValue: true
-          })(<Checkbox>Auto login in 7 days</Checkbox>)}
+          })(<Checkbox>记住密码</Checkbox>)}
           <a className="login-form-forgot" href="">
-            Forgot password
+            忘记密码
           </a>
+        </Form.Item>
+        <Form.Item>
           <Button
             type="primary"
             htmlType="submit"
             className="login-form-button"
           >
-            Log in
+            登录
           </Button>
-          Or <a href="">register now!</a>
         </Form.Item>
       </Form>
     );

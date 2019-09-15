@@ -1,7 +1,7 @@
-import Loadable from "react-loadable"
-import React from "react"
-function Loading(){
-    return <div></div>
+import Loadable from "react-loadable";
+import React from "react";
+function Loading() {
+  return <div></div>;
 }
 let Home=Loadable({loading:Loading,loader:()=>import("@/index")})
 let Login=Loadable({loading:Loading,loader:()=>import("../views/login")})
@@ -12,6 +12,7 @@ let Adduser=Loadable({loading:Loading,loader:()=>import("@/user/adduser/adduser"
 let Usershow=Loadable({loading:Loading,loader:()=>import("@/user/usershow/usershow")})
 let Addexam=Loadable({loading:Loading,loader:()=>import("@/exam/addexam/addexam")})
 let Examlist=Loadable({loading:Loading,loader:()=>import("@/exam/examlist/examlist")})
+let Createexam=Loadable({loading:Loading,loader:()=>import("@/exam/createexam/createexam")})
 let Class=Loadable({loading:Loading,loader:()=>import("@/class/class/class")})
 let Classrome=Loadable({loading:Loading,loader:()=>import("@/class/classrome/classrome")})
 let Student=Loadable({loading:Loading,loader:()=>import("@/class/student/student")})
@@ -66,6 +67,9 @@ const routes = [
         },{
             component:Addexam,
             path:"/home/addexam"
+        },{
+            component:Createexam,
+            path:"/home/createexam"
         },{
             component:Class,
             path:"/home/class"
