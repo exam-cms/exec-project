@@ -10,6 +10,7 @@ interface Props {
   history: any;
 }
 @inject("user")
+@observer
 class Login extends React.Component<Props> {
   handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

@@ -7,11 +7,18 @@ import { Provider } from "mobx-react";
 import { BrowserRouter} from 'react-router-dom'
 import store from "./store";
 import "antd/dist/antd.css";
+//导航守卫
+import {Router} from "react-router"
+import {createBrowserHistory} from "history"
+const history=createBrowserHistory()
+import guardInit from "./utils/permission"
+guardInit(history)
 ReactDOM.render(
   <Provider {...store}>
-          <BrowserRouter>
+          <Router history={history}>
           <RouterView routes={routes} />
-          </BrowserRouter>
+          </Router>
   </Provider>,
   document.getElementById("root") as HTMLElement
 );
+""

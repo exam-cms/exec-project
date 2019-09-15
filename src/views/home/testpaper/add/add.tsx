@@ -110,7 +110,7 @@ class Add extends React.Component<Props> {
     let examtypelist = await this.props.exam.getexamtype();
     let topiclist = await this.props.exam.gettopic();
     let courselist = await this.props.exam.getcourse();
-    let user_id = await this.props.user.getUserInfo();
+    let user_id = await this.props.user.getuserInfo();
     console.log(user_id, "dssdasd");
     this.setState({
       examtypelist: examtypelist.data,
