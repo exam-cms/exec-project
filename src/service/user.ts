@@ -15,11 +15,15 @@ export let getport=()=>{
     return request.get("/user/identity_api_authority_relation")//身份和api接口关系
 }
 export let getview=()=>{
-    return request.get("/user/view_authority")//视图接口权限
+    return request.get("/user/view_authority")//视图接口权限，可以获取到不同身份的路由视图权限
 }
 export let getpower=()=>{
     return request.get("/user/identity_view_authority_relation")//身份和视图权限关系
 }
 export let getuserInfo=()=>{
-    return request.get("/user/userInfo")
+    return request.get("/user/userInfo")//获取用户信息
+}
+// 更新用户信息
+export let updateUserInfo = (data: object)=>{
+    return request.put('/user/user', data);
 }

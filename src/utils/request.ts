@@ -4,11 +4,10 @@ import { message } from "antd";
 import { getToken } from "./index";
 
 const instance = axios.create({
-  baseURL: "http://169.254.169.33:7001",
+  baseURL: "http://localhost:7001",
   timeout: 1000,
   headers: { authorization: getToken() }
 });
-console.log(getToken())
 instance.interceptors.request.use(
   config => {
     return config;
@@ -25,12 +24,10 @@ instance.interceptors.response.use(
     return response.data;
   },
   error => {
-    console.log("error...", error.response);
     if (error.response.status && error.response.status !== 200) {
       message.error(error.response.statusText);
     }
     return Promise.resolve(error);
   }
 );
-
 export default instance;
