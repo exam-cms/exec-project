@@ -4,9 +4,11 @@ import { Table, Button, Input } from "antd";
 
 import { inject } from "mobx-react";
 const { Column } = Table;
-
+interface Props {
+  history:any
+}
 @inject("stayclass")
-class Stayclass extends React.Component {
+class Stayclass extends React.Component<Props> {
   state = {
     data: [
       {
@@ -55,7 +57,11 @@ class Stayclass extends React.Component {
                   render={(text: any, record: any) => (
                     <span>
                       <a
-                      //   onClick={this.splices.bind(this,text)}
+                        onClick={()=>{
+                          this.props.history.push({
+                            pathname:"/home/createexam"
+                          })
+                        }}
                       >
                         批卷
                       </a>

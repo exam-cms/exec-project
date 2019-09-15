@@ -30,7 +30,30 @@ const menu = (
   </Menu>
 );
 class Oheader extends React.Component {
+  state = {
+    visible: false,
+  };
+
+  handleMenuClick = (e:any) => {
+    if (e.key === '3') {
+      this.setState({ visible: false });
+    }
+  };
+
+  handleVisibleChange = (flag:any) => {
+    this.setState({ visible: flag });
+  };
   public render() {
+    const menu = (
+      <Menu onClick={this.handleMenuClick}>
+        <Menu.Item key="1" onClick={()=>{
+          console.log(1)
+        }}>个人中心</Menu.Item>
+        <Menu.Item key="2">我的班级</Menu.Item>
+        <Menu.Item key="3">设置</Menu.Item>
+        <Menu.Item key="4">退出登录</Menu.Item>
+      </Menu>
+    );
     return (
       <Header className="header">
         <div className="logo" />
@@ -42,11 +65,15 @@ class Oheader extends React.Component {
         >
           <Menu.Item key="1">北京八维研修学院</Menu.Item>
 
-          <Dropdown overlay={menu} trigger={["click"]}>
-            <a className="ant-dropdown-link" href="#">
-              <Icon type="down" />
-            </a>
-          </Dropdown>
+          <Dropdown
+        overlay={menu}
+        onVisibleChange={this.handleVisibleChange}
+        visible={this.state.visible}
+      >
+        <a className="ant-dropdown-link" href="#">
+          Hover me <Icon type="down" />
+        </a>
+      </Dropdown>
         </Menu>
       </Header>
     );

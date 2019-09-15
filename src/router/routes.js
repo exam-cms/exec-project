@@ -23,6 +23,7 @@ let Port=Loadable({loading:Loading,loader:()=>import("@/user/usershow/data/port"
 let Power=Loadable({loading:Loading,loader:()=>import("@/user/usershow/data/power")})
 let Userdata=Loadable({loading:Loading,loader:()=>import("@/user/usershow/data/userdata")})
 let View=Loadable({loading:Loading,loader:()=>import("@/user/usershow/data/view")})
+let AA=Loadable({loading:Loading,loader:()=>import("@/aa/a")})
 const routes = [
     {
         component:Home,
@@ -89,6 +90,11 @@ const routes = [
             path:"/home" ,
             redirect:"/home/classify"
         }]
+    },
+    {
+        component:AA,
+        path:"/aa"
+       
     },
     {
         component:Login,
