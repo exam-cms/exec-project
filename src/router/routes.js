@@ -91,6 +91,10 @@ const routes = [
         }]
     },
     {
+        component:Stayclass,
+        path:"/home/stayclass"
+    },
+    {
         component:Login,
         path:"/login"
        

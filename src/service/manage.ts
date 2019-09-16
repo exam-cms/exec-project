@@ -21,7 +21,7 @@ export let deleteClass = (params: object) => {
 // 修改班级
 export let updateClassNo = (params: object) => {
     console.log(params);
-    return request.put("/manger/room/update", params);
+    return request.put("/manger/room/update", {data:params});
   };
 
 // export let addClassNo=(params:object)=>{

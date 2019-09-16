@@ -16,6 +16,7 @@ class Mangement extends React.Component {
     grade_id: "",
     room_text:"",
     subject_text:"",
+    grade_name:"",
     data: [
       {
         grade_id: "1",
@@ -170,21 +171,19 @@ class Mangement extends React.Component {
 
 
   public handleChange = (value: any,title:any) => {
-    console.log(title);
-
     let {props} =title;
     this.setState({
       subject_id: props.value,
       subject_text: props.childrenlue
     });
-    console.log(this.state.subject_id,this.state.subject_id)
+    console.log(this.state.subject_id,this.state.subject_text)
   };
   public handleChange1 = (value: any,title:any) => {
     console.log(title);
     let {props} =title;
     this.setState({
       room_id:props.value,
-      room_text:props.children
+      room_text:props.childrenlue
     });
     console.log(this.state.room_id,this.state.room_text)
   };
@@ -206,7 +205,7 @@ class Mangement extends React.Component {
   //     return item=item.room_id==text.room_id
   //   })
     console.log(text.room_id)
-    this.setState({ flag: true,class:del,room_id:text.room_id});
+    this.setState({ flag: true,class:del,grade_id:text.grade_id,grade_name:text.grade_name,subject_id:text.subject_id,room_id:text.room_id});
     
    }
   //点击删除
@@ -252,8 +251,8 @@ class Mangement extends React.Component {
   };
 
   public upDate = async () => {
-    console.log(this.state.room_id,this.state.room_text)
-    const reult = await this.props["manage"].updateClass({room_id:this.state.room_id,room_text:this.state.room_text});
+    console.log({grade_id:this.state.grade_id,grade_name:this.state.grade_name,subject_id:this.state.subject_id,room_id:this.state.room_id})
+    const reult = await this.props["manage"].updateClass({grade_id:this.state.grade_id,grade_name:this.state.grade_name,subject_id:this.state.subject_id,room_id:this.state.room_id});
     console.log(reult)
   };
 
