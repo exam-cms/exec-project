@@ -9,8 +9,8 @@ import store from "./store";
 import "antd/dist/antd.css";
 //导航守卫
 import {Router} from "react-router"
-import {createBrowserHistory} from "history"
-const history=createBrowserHistory()
+import {createHashHistory} from "history"
+const history=createHashHistory()
 import guardInit from "./utils/permission"
 guardInit(history)
 ReactDOM.render(
@@ -21,4 +21,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root") as HTMLElement
 );
-""

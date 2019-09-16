@@ -3,8 +3,12 @@ import { AxiosResponse } from "axios/index";
 import { message } from "antd";
 import { getToken } from "./index";
 
+let url ={
+  "123.206.55.50":"//exam.jasonandjay.com",
+  "127.0.0.1":"//169.254.169.33:7001"
+}
 const instance = axios.create({
-  baseURL: "http://localhost:7001",
+  baseURL: url[window.location.host],
   timeout: 1000,
   headers: { authorization: getToken() }
 });

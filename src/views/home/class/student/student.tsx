@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./css/student.css";
 import { Input, Select, Table } from "antd";
+// import XLSX from "xlsx"
 const { Option } = Select;
 import { inject } from "mobx-react";
 const columns = [
@@ -58,6 +59,10 @@ class Student extends React.Component <Props>{
           </Select>
           <button className="searchbtn">搜索</button>
           <button className="resetbtn">重置</button>
+          <button className="resetbtn" >导出</button>
+          <button className="resetbtn">
+            <input type="file"  />
+          </button>
         </div>
         <div className="content">
           <Table columns={columns} dataSource={data} size="middle" />
@@ -65,6 +70,29 @@ class Student extends React.Component <Props>{
       </div>
     );
   }
+//   exportExcel = ()=>{
+//     // 1.把table里面的数据生成worksheet
+//     let wroksheet = XLSX.utils.json_to_sheet(this.state.data);
+//     // 2.把worksheet放到workbook里
+//     let workbook = XLSX.utils.book_new();
+//     XLSX.utils.book_append_sheet(workbook, wroksheet);
+//     XLSX.utils.book_append_sheet(workbook, wroksheet);
+//     XLSX.utils.book_append_sheet(workbook, wroksheet);
+//     XLSX.utils.book_append_sheet(workbook, wroksheet);
+//     XLSX.utils.book_append_sheet(workbook, wroksheet);
+//     XLSX.writeFile(workbook, '学生名单.xlsx');
+// }
+
+// uploadExcel = (e:any)=>{
+//     let reader = new FileReader();
+//     reader.onload = function(e: any){
+//         var data = new Uint8Array(e.target.result);
+//         var workbook = XLSX.read(data, {type: 'array'});
+//         var ws = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+//     }
+
+//     reader.readAsArrayBuffer(e.target.files[0]);
+// }
   async componentDidMount() {
       let data=await this.props['manage'].getstudent()
       console.log(data)
